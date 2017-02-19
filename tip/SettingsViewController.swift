@@ -1,18 +1,15 @@
 //
-//  ViewController.swift
+//  SettingsViewController.swift
 //  tip
 //
-//  Created by Appel, Jeremy D on 2/14/17.
+//  Created by Appel, Jeremy D on 2/19/17.
 //  Copyright © 2017 JDA. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class SettingsViewController: UIViewController {
 
-    @IBOutlet weak var billField: UITextField!
-    @IBOutlet weak var tipLabel: UILabel!
-    @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
     private let percentages = [0.18, 0.20, 0.25]
     
@@ -30,19 +27,14 @@ class ViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func onTap(_ sender: Any) {
-        view.endEditing(true)
-    }
-    
-    @IBAction func calculateTip(_ sender: AnyObject) {
-        let bill = Double(billField.text!) ?? 0
-        let tip = bill * percentages[tipControl.selectedSegmentIndex]
-        let total = bill + tip
-        
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
-    }
-}
 
+    @IBAction func setDefault(_ sender: Any) {
+        let percentages = [0.18, 0.20, 0.25]
+        let defaults = UserDefaults.standard
+        defaults.set(percentages[tipControl.selectedSegmentIndex], forKey: "defaultTip")
+        defaults.synchronize()
+    }
+
+}
