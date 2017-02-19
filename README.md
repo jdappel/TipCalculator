@@ -21,7 +21,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://raw.githubusercontent.com/jdappel/TipCalculator/master/walthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![Alt Text](https://github.com/jdappel/TipCalculator/raw/master/walkthrough.gif)
 
 ## Notes
 
