@@ -16,12 +16,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipControl: UISegmentedControl!
     private let percentages = [0.18, 0.20, 0.25]
     
+    var formatter : NumberFormatter {
+        let f = NumberFormatter()
+        f.numberStyle = .currency
+        f.locale = Locale(identifier: Locale.current.identifier)
+        return f
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        billField.becomeFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    
         let defaults = UserDefaults.standard
         let val = defaults.double(forKey: "defaultTip")
         let index = percentages.index(of: val) ?? 0
@@ -41,8 +50,8 @@ class ViewController: UIViewController {
         let tip = bill * percentages[tipControl.selectedSegmentIndex]
         let total = bill + tip
         
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
+        tipLabel.text = formatter.string(from: tip as NSNumber)
+        totalLabel.text = formatter.string(from: total as NSNumber)
     }
 }
 

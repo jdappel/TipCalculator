@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D8638B761E59E68D00B474F3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8638B751E59E68D00B474F3 /* SettingsViewController.swift */; };
-		D8638B7A1E5A551900B474F3 /* walkthrough.gif in Resources */ = {isa = PBXBuildFile; fileRef = D8638B791E5A551900B474F3 /* walkthrough.gif */; };
 		D86E15FA1E5370FB001E8CAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86E15F91E5370FB001E8CAD /* AppDelegate.swift */; };
 		D86E15FC1E5370FB001E8CAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86E15FB1E5370FB001E8CAD /* ViewController.swift */; };
 		D86E15FF1E5370FB001E8CAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86E15FD1E5370FB001E8CAD /* Main.storyboard */; };
@@ -18,7 +17,6 @@
 
 /* Begin PBXFileReference section */
 		D8638B751E59E68D00B474F3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		D8638B791E5A551900B474F3 /* walkthrough.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = walkthrough.gif; path = ../../walkthrough.gif; sourceTree = "<group>"; };
 		D86E15F61E5370FB001E8CAD /* tip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D86E15F91E5370FB001E8CAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D86E15FB1E5370FB001E8CAD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,7 +60,6 @@
 				D86E15FB1E5370FB001E8CAD /* ViewController.swift */,
 				D86E15FD1E5370FB001E8CAD /* Main.storyboard */,
 				D8638B751E59E68D00B474F3 /* SettingsViewController.swift */,
-				D8638B791E5A551900B474F3 /* walkthrough.gif */,
 				D86E16001E5370FB001E8CAD /* Assets.xcassets */,
 				D86E16021E5370FB001E8CAD /* LaunchScreen.storyboard */,
 				D86E16051E5370FB001E8CAD /* Info.plist */,
@@ -132,7 +129,6 @@
 				D86E16041E5370FB001E8CAD /* LaunchScreen.storyboard in Resources */,
 				D86E16011E5370FB001E8CAD /* Assets.xcassets in Resources */,
 				D86E15FF1E5370FB001E8CAD /* Main.storyboard in Resources */,
-				D8638B7A1E5A551900B474F3 /* walkthrough.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
