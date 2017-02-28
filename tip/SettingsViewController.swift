@@ -9,9 +9,9 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
-    @IBOutlet weak var tipControl: UISegmentedControl!
-    private let percentages = [0.18, 0.20, 0.25]
+    
+    @IBOutlet weak var sliderControl: UISlider!
+    @IBOutlet weak var tipPercentageLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,9 +20,9 @@ class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let defaults = UserDefaults.standard
-        let val = defaults.double(forKey: "defaultTip")
-        let index = percentages.index(of: val) ?? 0
-        tipControl.selectedSegmentIndex = index
+        let val = defaults.float(forKey: "defaultTip")
+        setTipLabel(val)
+        sliderControl.value = val
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,10 +31,14 @@ class SettingsViewController: UIViewController {
     }
 
     @IBAction func setDefault(_ sender: Any) {
-        let percentages = [0.18, 0.20, 0.25]
         let defaults = UserDefaults.standard
-        defaults.set(percentages[tipControl.selectedSegmentIndex], forKey: "defaultTip")
+        let percentage = trunc(sliderControl.value)
+        defaults.set(percentage, forKey: "defaultTip")
+        setTipLabel(percentage)
         defaults.synchronize()
     }
-
+    
+    private func setTipLabel(_ val: Float) {
+        tipPercentageLabel.text = String(format: "%.0f", val) + "%"
+    }
 }
