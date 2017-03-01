@@ -25,28 +25,46 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        billField.becomeFirstResponder()
+        billField.placeholder = getCurrencySymbol()
+        
+        loadDefaults()
+        calculateTip()
     }
     
-    func getCurrencySymbol() -> String {
+    private func getCurrencySymbol() -> String {
         return Locale.current.currencySymbol ?? "$"
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    
+    private func loadDefaults() {
+        
         let defaults = UserDefaults.standard
         let val = defaults.float(forKey: "defaultTip")
-        let timeStamp = defaults.object(forKey: "timestamp") ?? Calendar.current.date(byAdding: .minute, value: -20, to: Date())
+        let timeStamp = defaults.object(forKey: "timestamp") ?? Calendar.current.date(byAdding: .minute, value: -10, to: Date())
         if (lessThan10Minutes(date: timeStamp as! Date)) {
-            billField.text = defaults.string(forKey: "bill")
+            if let bill = defaults.string(forKey: "bill") {
+                billField.text = bill
+            }
+            else {
+                billField.becomeFirstResponder()
+            }
         }
         else {
-            billField.placeholder = getCurrencySymbol()
+            billField.becomeFirstResponder()
         }
         
         sliderControl.value = val
         setTipLabel(val)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        loadDefaults()
+        calculateTip()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        save()
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +76,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func calculateTip(_ sender: AnyObject) {
+        calculateTip()
+    }
+    
+    private func calculateTip() {
         let bill = Double(billField.text!) ?? 0
         let tip = bill * (Double(trunc(sliderControl.value)) / 100)
         let total = bill + tip
@@ -77,7 +99,7 @@ class ViewController: UIViewController {
         
         let defaults = UserDefaults.standard
         defaults.set(savedTime, forKey: "timestamp")
-        defaults.set(billField.text, forKey: "bill")
+        defaults.set(billField.text!, forKey: "bill")
         defaults.synchronize()
     }
     
